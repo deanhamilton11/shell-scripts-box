@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: True
+  tasks:
+    - name: Copy Shell Scripts
+      copy:
+        src: scripts/{{ item }}.sh
+        dest: /usr/local/bin/{{ item }}
+        owner: vagrant
+        group: vagrant
+        mode: 0744
+      with_items:
+        - inpath
