@@ -16,7 +16,7 @@ validAlphaNum()
   fi
 }
 
-# Everything below this line must be removed if you want to use
+# Everything below this line must be removed if you want to include
 #   this in other scripts
 /bin/echo -n "Enter input: "
 read input
