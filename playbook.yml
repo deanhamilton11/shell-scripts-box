@@ -11,4 +11,4 @@
         mode: 0744
       with_items:
         - inpath
-        - validAlphaNum
+        - validalnum
