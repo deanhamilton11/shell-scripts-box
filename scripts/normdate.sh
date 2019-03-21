@@ -22,6 +22,11 @@ monthNumToName()
 # Everything below this line must be removed if you want to include
 #   this in other scripts
 
+# Allow MM/DD/YYYY or MM-DD-YYYY
+if [ $# -eq 1 ] ; then
+  set -- $(echo $1 | sed 's/[\/\-]/ /g')
+fi
+
 # Input validation
 if [ $# -ne 3 ] ; then
   echo "$#" >&2
@@ -39,8 +44,8 @@ if [ -z $(echo $1|sed 's/[[:digit:]]//g') ]; then
   monthNumToName $1
 else
   # Normalize to first 3 letters, first upper- and then lowercase.
-  month="$(echo $1|cut -c1|tr '[:lower:]' '[:upper:]')"
-  month="$month$(echo $1|cut -c2-3 | tr '[:upper:]' '[:lower:]')"
+  month="$(echo $1 | cut -c1 | tr '[:lower:]' '[:upper:]')"
+  month="$month$(echo $1 | cut -c2-3 | tr '[:upper:]' '[:lower:]')"
 fi
 
 echo $month $2 $3
