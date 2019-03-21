@@ -11,7 +11,7 @@ in_path()
   cmd=$1        ourpath=$2         result=1
   oldIFS=$IFS   IFS=":"
 
-  for directory in “$ourpath”
+  for directory in $ourpath
   do
     if [ -x $directory/$cmd ] ; then
       result=0 # If we're here, we found the command.
@@ -31,7 +31,7 @@ checkForCmdInPath()
       if [ ! -x $var ] ; then
         return 1
       fi
-    elif ! in_path $var "$PATH" ; then
+    elif ! in_path $var $PATH ; then
       return 2
     fi
   fi
